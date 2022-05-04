@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "1. Setup Git, VSCode, Node\r 2. How to setup nodejs\r 3. How to create a simple page",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "devStart": "nodemon server.js"
   },
