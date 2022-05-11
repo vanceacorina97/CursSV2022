@@ -1,0 +1,124 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "Courier New", Courier, monospace;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+  font-family: "Courier New", Courier, monospace;
+}
+
+a {
+  text-decoration: none;
+}
+
+#blog {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 40px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.blog-heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.blog-heading span {
+  color: rgb(40, 40, 226);
+}
+
+.blog-heading h3 {
+  font-size: 2.4rem;
+  color: #2b2b2b;
+  font-weight: 600;
+}
+
+.blog-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0px;
+  flex-wrap: wrap;
+}
+
+.blog-box {
+  width: 400px;
+  background-color: #ffffff;
+  border: 1px solid #ececec;
+  margin: 20px;
+}
+
+.blog-img img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+}
+
+.blog-text {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  min-height: 230px;
+}
+
+.blog-text span {
+  color: rgb(45, 45, 236);
+  font-size: 0.9rem;
+}
+
+.blog-text .blog-title {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #272727;
+}
+
+.blog-text p {
+  color: #9b9b9b;
+  font-size: 0.9rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 20px 0px;
+}
+
+.blog-text a {
+  color: #0f0f0f;
+}
+
+.blog-text a:hover {
+  color: rgb(27, 27, 238);
+  transition: all ease 0.3s;
+}
+
+.blog-button {
+  margin: 0px 0px 10px 10px;
+  box-shadow: inset 0px 1px 0px 0px #ffffff;
+  background: linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+  background-color: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #dcdcdc;
+  cursor: pointer;
+  color: #666666;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 6px 24px;
+  text-shadow: 0px 1px 0px #ffffff;
+}
+
+.blog-button:hover {
+  background: linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
+  background-color: #f6f6f6;
+}
+
+.blog-button:active {
+  position: relative;
+  top: 1px;
+}

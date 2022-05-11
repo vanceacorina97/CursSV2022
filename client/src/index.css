@@ -1,0 +1,108 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  padding: 10px;
+}
+
+.example {
+  border: 1px solid;
+  padding: 20px;
+  text-align: center;
+}
+
+.bottle-container {
+  width: 100px;
+  position: relative;
+  padding-top: 1px;
+  height: 165px;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.bottle-neck {
+  border: 1px solid gray;
+  background: lightblue;
+  width: 20px;
+  height: 15px;
+  margin: auto;
+  border-bottom: none;
+  position: absolute;
+  left: 40px;
+  top: 1px;
+}
+
+.bottle {
+  border: 1px solid gray;
+  width: 100px;
+  height: 150px;
+  border-radius: 40px 40px 20px 20px;
+  margin-top: 15px;
+  background: lightblue;
+}
+
+.liquid {
+  width: 100px;
+  height: 120px;
+  position: absolute;
+  bottom: -1px;
+  left: 1px;
+  opacity: 0.6;
+  border-radius: 0px 0px 19px 19px;
+}
+
+.etiquette {
+  width: 80px;
+  height: 40px;
+  border: 2px solid black;
+  background: #ffcb9c;
+  position: absolute;
+  bottom: 50px;
+  left: 10px;
+  text-align: center;
+  font-size: 30px;
+  font-family: Brush Script MT;
+  cursor: pointer;
+}
+.cap-out {
+  background: brown;
+  width: 18px;
+  height: 10px;
+  position: absolute;
+  left: 42px;
+  top: -5px;
+  cursor: pointer;
+}
+.cap-in {
+  background: brown;
+  width: 18px;
+  height: 10px;
+  position: absolute;
+  left: 42px;
+  top: 1px;
+  opacity: 0.5;
+}
+.remove-bottle {
+  position: absolute;
+  color: red;
+  top: 0;
+  right: 0;
+  border: 1px solid;
+  cursor: pointer;
+}
+
+.remove-bottle:hover {
+  color: white;
+  background: red;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.bottle-container.open > .cap-out,
+.bottle-container.open > .cap-in {
+  opacity: 0;
+}
