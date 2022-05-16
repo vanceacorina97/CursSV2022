@@ -1,0 +1,51 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  padding: 10px;
+}
+
+.exercitiu {
+  border: 1px solid;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 20px;
+  text-align: center;
+}
+
+footer {
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+}
+.app-header {
+  text-align: center;
+  padding: 10px;
+  margin: 0;
+  border-bottom: 2px solid;
+  width: 98%;
+}
+
+.app-footer {
+  text-align: center;
+  padding: 10px;
+  margin: 0;
+  border-top: 2px solid;
+  width: 98%;
+}
