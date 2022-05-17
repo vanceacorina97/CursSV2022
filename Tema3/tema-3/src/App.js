@@ -14,7 +14,6 @@ function App() {
       <Exercitiu3 />
       <br />
       <Exercitiu4 />
-      <footer className="app-footer"> Curs 4 - Rezolvare Tema </footer>
     </div>
   );
 }

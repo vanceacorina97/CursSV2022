@@ -1,3 +1,8 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -12,13 +17,13 @@ code {
     monospace;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-}
-
 .App {
   padding: 10px;
+}
+
+.d-flex {
+  display: flex;
+  align-items: center;
 }
 
 .exercitiu {
@@ -29,23 +34,144 @@ code {
   text-align: center;
 }
 
-footer {
-  bottom: 0;
-  position: fixed;
-  width: 100%;
-}
 .app-header {
   text-align: center;
   padding: 10px;
-  margin: 0;
-  border-bottom: 2px solid;
-  width: 98%;
 }
 
-.app-footer {
-  text-align: center;
+.produs-container {
+  border: 4px solid;
+  border-radius: 10px;
+  width: 200px;
+  position: relative;
   padding: 10px;
-  margin: 0;
-  border-top: 2px solid;
-  width: 98%;
+  height: 165px;
+  margin: 10px auto auto auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.eticheta {
+  border: 1px groove cadetblue;
+  border-radius: 20px;
+  padding: 20px;
+  margin: 10px;
+}
+.name-container {
+  border: 4px solid;
+  border-radius: 10px;
+  width: 200px;
+  position: relative;
+  padding: 10px;
+  height: 165px;
+  margin: 10px auto auto auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.name-tag {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.363);
+  box-shadow: 0px 8px 20px rgb(0 0 0 / 29%);
+  font-size: 0.6rem;
+  letter-spacing: 0.1rem;
+  text-align: center;
+}
+
+.span-name {
+  cursor: default;
+}
+
+.favorite-color {
+  color: red;
+}
+
+.gradient-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gradient-box {
+  width: 100px;
+  height: 100px;
+  border: 1px solid;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.add-button {
+  box-shadow: inset 0px 1px 0px 0px #ffffff;
+  background: linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+  background-color: #ededed;
+  border-radius: 6px;
+  border: 1px solid #dcdcdc;
+  display: inline-block;
+  cursor: pointer;
+  color: #777777;
+  font-family: Arial;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 6px 24px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #ffffff;
+  margin-left: 3px;
+}
+
+.add-button:hover {
+  background: linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
+  background-color: #dfdfdf;
+}
+
+.add-button:active {
+  position: relative;
+  top: 1px;
+}
+
+.color-box {
+  width: 120px;
+  height: 30px;
+  border-radius: 10px;
+  margin: 20px;
+  position: relative;
+  border: 1px solid;
+  line-height: 27px;
+}
+
+.remove-button {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  padding: 5px;
+  border-radius: 30px;
+  width: 15px;
+  height: 15px;
+  text-align: center;
+  background: black;
+  font-size: 11px;
+  color: white;
+  cursor: default;
+  line-height: 3px;
+}
+
+.remove-button div {
+  margin-top: 7px;
+}
+
+.message {
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.message.loaded {
+  color: green;
 }
