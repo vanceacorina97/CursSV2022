@@ -106,3 +106,9 @@
 .bottle-container.open > .cap-in {
   opacity: 0;
 }
+
+.chat-box {
+  border: 1px solid;
+  width: 500px;
+  height: 500px;
+}
