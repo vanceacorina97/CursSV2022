@@ -1,25 +1,39 @@
-import Example1 from "./components/examples/example1";
-import Example2 from "./components/examples/example2";
-import Example3 from "./components/examples/example3";
-import Example4 from "./components/examples/example4";
-import Example5 from "./components/examples/example5";
+import { io } from "socket.io-client";
+import { useEffect, useState } from "react";
+import Chat from "./components/room/chat/chat";
+import Rooms from "./components/menu/rooms";
 
 function App() {
+  const [connectedSocket, setConnectedSocket] = useState();
+  const [data, setData] = useState();
+
+  useEffect(() => {
+    const socket = io();
+
+    socket.on("connected", () => {
+      setConnectedSocket(socket);
+    });
+
+    socket.on("data", (receivedData) => {
+      setData(receivedData);
+    });
+  }, []);
+
+  if (!(data && connectedSocket)) {
+    return <p>Waiting for connection...</p>;
+  }
+
+  console.log({ data });
+
   return (
-    <>
-      <div className="App">
-        <Example1 />
-        <br />
-        <Example2 />
-        <br />
-        <Example3 />
-        <br />
-        <Example4 />
-        <br />
-        <Example5 />
-      </div>
-      <footer> Curs 3 </footer>
-    </>
+    <div style={{ padding: 10 }}>
+      <h1>Curs 4</h1>
+      {data.room === "menu" ? (
+        <Rooms socket={connectedSocket} rooms={data.availableRooms} />
+      ) : (
+        <Chat socket={connectedSocket} roomName={data.room} />
+      )}
+    </div>
   );
 }
 

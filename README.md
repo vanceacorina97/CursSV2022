@@ -17,3 +17,14 @@
 - `cd client/`
 - `npm i`
 - `npm start`
+
+### Server + Client Start - Socket.io ( Course 4)
+
+- `cd sever/`
+- `npm install`
+- `npm start` sau `nodemon server.js`
+- deschidem un nou terminal din root-ul proiectului
+- `cd client/`
+- `npm install`
+- `npm start`, la prompt-ul cu Would you like to run the app on another port instead? apăsăm tasta enter
+- Aplicația trebuie accesată prin port-ul client-ului, și anume: http://localhost:3001/
