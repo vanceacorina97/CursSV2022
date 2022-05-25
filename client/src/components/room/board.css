@@ -1,0 +1,203 @@
+.overlay {
+  z-index: 2;
+  border-radius: 67px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 8px 9px 16px 0px rgb(159 169 189 / 22%),
+    inset 1px 1px 5px 0px rgb(228 240 250),
+    inset -10px -11px 15px 8px rgb(192 211 246 / 40%);
+  width: fit-content;
+  height: fit-content;
+  margin: 0 auto;
+  padding: 40px;
+}
+
+.overlay > svg {
+  overflow: visible;
+}
+
+.node {
+  cursor: pointer;
+}
+
+.node.empty {
+  opacity: 0;
+}
+
+.node-to-place {
+  height: 30px;
+  width: 30px;
+  display: inline-block;
+  margin-left: 5px;
+  border-radius: 15px;
+}
+
+.node-to-place.current {
+  background-color: #1976d2;
+}
+
+.node-to-place.opponent {
+  background-color: red;
+}
+
+.error {
+  color: red;
+  background-color: white;
+}
+
+.grid {
+  display: flex;
+  align-items: center;
+}
+
+@keyframes changePlace {
+  0% {
+    transform: translateY(0%);
+  }
+  50% {
+    transform: translateY(-12%);
+  }
+  95% {
+    transform: translateY(2%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+.card-background {
+  border-radius: 45px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 8px 9px 16px 0px rgb(159 169 189 / 22%),
+    inset 1px 1px 5px 0px rgb(228 240 250),
+    inset -10px -11px 15px 8px rgb(192 211 246 / 40%);
+  width: fit-content;
+  height: fit-content;
+  margin: 0;
+  padding: 40px;
+}
+
+.active-player {
+  animation: changePlace 6s infinite linear;
+  position: relative;
+}
+
+.card-grid {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+  margin-left: 100px;
+  width: 500px;
+}
+
+.token-player-2 {
+  width: 30px;
+  height: 30px;
+}
+
+.player-arrow {
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.action-text {
+  color: #ef4b35;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+.player-action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 20px;
+}
+
+h4 {
+  margin: 0px;
+  font-size: 18pt;
+}
+
+.br {
+  background-color: rgb(255, 255, 255);
+  box-shadow: 1.009px 1.012px 2px 0px rgb(196 212 242 / 40%),
+    inset 1.736px 1.736px 0.57px 0.03px rgb(220 229 248 / 35%),
+    inset -1px -2px 1px 0px rgb(129 148 178 / 40%);
+  width: 180px;
+  border-radius: 4px;
+  height: 6px;
+  margin: 6px 0px 10px 0px;
+}
+
+.uncaptured-node {
+  background-color: rgb(250, 251, 253);
+  box-shadow: inset 4px 5px 5px 0px rgb(14 90 153 / 40%),
+    inset -6px -4px 8px 0px rgb(255 255 255 / 40%);
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  margin-right: 5px;
+}
+
+.uncaptured-nodes-container {
+  display: flex;
+}
+
+.nodes-capture-container {
+  display: flex;
+}
+
+.player-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.player-tokens-left {
+  display: flex;
+  align-items: center;
+}
+
+.player-token-count {
+  font-size: 20px;
+  margin-right: 5px;
+}
+
+textarea:focus,
+input:focus {
+  outline: none;
+}
+
+.node {
+  filter: blur(80px);
+  animation: place 0.5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes place {
+  from {
+    filter: blur(80px);
+  }
+  to {
+    filter: blur(0px);
+  }
+}
+
+.node-out {
+  animation: out 0.5s;
+  animation-fill-mode: forwards;
+}
+
+.selected-node {
+  filter: drop-shadow(0px 0px 15px blue) !important;
+}
+
+@keyframes out {
+  from {
+    filter: blur(0px);
+  }
+  to {
+    filter: blur(200px);
+  }
+}

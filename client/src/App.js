@@ -1,7 +1,7 @@
 import { io } from "socket.io-client";
 import { useEffect, useState } from "react";
-import Chat from "./components/room/chat/chat";
-import Rooms from "./components/menu/rooms";
+import Menu from "./components/menu/menu";
+import Room from "./components/room/room";
 
 function App() {
   const [connectedSocket, setConnectedSocket] = useState();
@@ -19,22 +19,25 @@ function App() {
     });
   }, []);
 
-  if (!(data && connectedSocket)) {
-    return <p>Waiting for connection...</p>;
-  }
+  const content = () => {
+    if (!(connectedSocket && data)) return null;
 
-  console.log({ data });
+    const { room } = data;
 
-  return (
-    <div style={{ padding: 10 }}>
-      <h1>Curs 4</h1>
-      {data.room === "menu" ? (
-        <Rooms socket={connectedSocket} rooms={data.availableRooms} />
-      ) : (
-        <Chat socket={connectedSocket} roomName={data.room} />
-      )}
-    </div>
-  );
+    if (room === "menu") {
+      return (
+        <Menu
+          socket={connectedSocket}
+          rooms={data.availableRooms}
+          socketName={data.socketName}
+        />
+      );
+    }
+
+    return <Room socket={connectedSocket} {...room} />;
+  };
+
+  return <div className="container">{content()}</div>;
 }
 
 export default App;
