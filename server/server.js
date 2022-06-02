@@ -1,14 +1,18 @@
-const express = require("express");
+import express from "express";
 const app = express();
-const http = require("http");
-const { Server } = require("socket.io");
-const Game = require("./models/game");
+import http from "http";
+import { Server } from "socket.io";
+import Game from "./models/game.js";
+
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
 
 const port = 3000;
 const server = http.createServer(app);
 const io = new Server(server);
 
-app.use(express.static(__dirname));
+const __filename = fileURLToPath(import.meta.url);
+app.use(express.static(dirname(__filename)));
 
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/index.html");
@@ -37,7 +41,7 @@ io.on("connection", (socket) => {
 
   socket.data.name = socket.id;
 
-  socket.emit("connected");
+  socket.emit("connected", socket.id);
   socket.join("menu");
 
   emitMenuData();
@@ -58,7 +62,7 @@ io.on("connection", (socket) => {
     if (availableRooms.indexOf(roomName) === -1 && roomName !== "menu") {
       console.log("[CREATED ROOM] " + roomName);
       availableRooms.push(roomName);
-      games[roomName] = new Game(roomName);
+      games[roomName] = new Game(socket.id);
       socket.data.room = roomName;
       socket.leave("menu");
       socket.join(roomName);
@@ -71,11 +75,35 @@ io.on("connection", (socket) => {
 
   socket.on("join-room", (roomName) => {
     socket.leave("menu");
-    games[roomName].addPlayer();
+    games[roomName].addPlayer(socket.id);
     socket.join(roomName);
     socket.data.room = roomName;
     availableRooms = availableRooms.filter((room) => room !== roomName);
     emitRoomData(roomName);
     emitMenuData();
+  });
+
+  socket.on("game-action", ({ action, circleId }) => {
+    console.log({ action, circleId });
+    const game = games[socket.data.room];
+    game.action(socket.id, action, circleId);
+    // Emit to everyone in 'roomName' the room data
+    let data;
+    if (game.isOver) {
+      // leftRooms.push(socket.data.room);
+      data = {
+        name: socket.data.room,
+        mustLeave: true,
+        message: "The game ended.",
+        winner: game.winner,
+      };
+    } else {
+      data = {
+        name: socket.data.room,
+        ready: true,
+        game: game.data(),
+      };
+    }
+    io.to(socket.data.room).emit("game-data", data);
   });
 });
