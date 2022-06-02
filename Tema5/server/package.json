@@ -1,0 +1,27 @@
+{
+  "name": "curssv2022",
+  "version": "1.0.0",
+  "description": "1. Setup Git, VSCode, Node\r 2. How to setup nodejs\r 3. How to create a simple page",
+  "main": "index.js",
+  "scripts": {
+    "devStart": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vanceacorina97/CursSV2022.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vanceacorina97/CursSV2022/issues"
+  },
+  "homepage": "https://github.com/vanceacorina97/CursSV2022#readme",
+  "dependencies": {
+    "express": "^4.18.0",
+    "socket.io": "^4.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
