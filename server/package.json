@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "1. Setup Git, VSCode, Node\r 2. How to setup nodejs\r 3. How to create a simple page",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "devStart": "nodemon server.js"
   },
@@ -19,7 +20,8 @@
   "homepage": "https://github.com/vanceacorina97/CursSV2022#readme",
   "dependencies": {
     "express": "^4.18.0",
-    "socket.io": "^4.5.0"
+    "socket.io": "^4.5.0",
+    "socket.io-client": "^4.5.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
