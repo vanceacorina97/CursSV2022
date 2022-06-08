@@ -2,8 +2,9 @@ import BoardLines from "../../metadata/board_lines";
 import EmptyNodes from "../../metadata/empty_nodes";
 import "./board.css";
 import EmptyNode from "./empty_node";
+import NodeList from "./node_list";
 
-const Board = () => {
+const Board = (props) => {
   return (
     <>
       <div className="overlay">
@@ -24,6 +25,9 @@ const Board = () => {
             height={1404}
             xlinkHref={BoardLines}
           />
+          <g style={{ stroke: "none", fill: "#777" }}>
+            <NodeList {...props} />
+          </g>
         </svg>
       </div>
     </>
