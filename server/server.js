@@ -4,8 +4,8 @@ import http from "http";
 import { Server } from "socket.io";
 import Game from "./models/game.js";
 
-import { dirname } from 'path';
-import { fileURLToPath } from 'url';
+import { dirname } from "path";
+import { fileURLToPath } from "url";
 
 const port = 3000;
 const server = http.createServer(app);
@@ -62,7 +62,7 @@ io.on("connection", (socket) => {
     if (availableRooms.indexOf(roomName) === -1 && roomName !== "menu") {
       console.log("[CREATED ROOM] " + roomName);
       availableRooms.push(roomName);
-      games[roomName] = new Game(socket.id);
+      games[roomName] = new Game(roomName, socket.id);
       socket.data.room = roomName;
       socket.leave("menu");
       socket.join(roomName);
@@ -87,23 +87,24 @@ io.on("connection", (socket) => {
     console.log({ action, circleId });
     const game = games[socket.data.room];
     game.action(socket.id, action, circleId);
-    // Emit to everyone in 'roomName' the room data
-    let data;
-    if (game.isOver) {
-      // leftRooms.push(socket.data.room);
-      data = {
+    emitRoomData(socket.data.room);
+  });
+
+  socket.on("leave-room", () => {
+    socket.leave(socket.data.room);
+    socket.join("menu");
+
+    emitMenuData();
+  });
+
+  socket.on("disconnect", () => {
+    console.log("[SOCKET DISCONNECTED] " + socket.id);
+    io.to(socket.data.room).emit("data", {
+      room: {
         name: socket.data.room,
         mustLeave: true,
-        message: "The game ended.",
-        winner: game.winner,
-      };
-    } else {
-      data = {
-        name: socket.data.room,
-        ready: true,
-        game: game.data(),
-      };
-    }
-    io.to(socket.data.room).emit("game-data", data);
+        message: "The other player left. Please leave the room...",
+      },
+    });
   });
 });

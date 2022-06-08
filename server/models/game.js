@@ -6,40 +6,51 @@ const ACTIONS = {
   place: "place",
   move: "move",
   capture: "capture",
-  select: "select"
+  select: "select",
 };
 
 class Game {
-  constructor(player) {
-    // this.name = name;
-    // this.ready = false;
+  constructor(name, player) {
+    this.name = name;
+    this.ready = false;
     this.board = new Board();
     this.playerOne = new Player(player, ACTIONS.place, this.board, true);
     this.actions = new Map([
       ["place", this.place.bind(this)],
       ["capture", this.capture.bind(this)],
       ["select", this.select.bind(this)],
-      ["move", this.move.bind(this)]
+      ["move", this.move.bind(this)],
     ]);
   }
 
   data = () => {
+    if (this.isOver)
+      return {
+        mustLeave: true,
+        message: "The game is over!",
+        winner: this.winner,
+      };
+
     if (this.playerTwo) {
       return {
         players: { ...this.playerOne.toJson(), ...this.playerTwo.toJson() },
-        nodes: Object.fromEntries(this.board.nodeList)
+        nodes: Object.fromEntries(this.board.nodeList),
+        ready: this.ready,
+        name: this.name,
       };
     }
+
     return {
       players: { ...this.playerOne.toJson() },
-      nodes: Object.fromEntries(this.board.nodeList)
+      nodes: Object.fromEntries(this.board.nodeList),
+      ready: this.ready,
+      name: this.name,
     };
-
-
   };
 
   addPlayer(player) {
     this.playerTwo = new Player(player, ACTIONS.wait, this.board, false);
+    this.ready = true;
   }
 
   place(node, currentPlayer, otherPlayer) {
@@ -67,7 +78,7 @@ class Game {
     if (otherPlayer.nodesLeftToPlace) {
       otherPlayer.changeAction(ACTIONS.place);
     } else {
-      otherPlayer.change(ACTIONS.select);
+      otherPlayer.changeAction(ACTIONS.select);
     }
   }
 
