@@ -1,0 +1,48 @@
+.matrix {
+  margin: 2rem auto;
+  padding: 1rem;
+  width: fit-content;
+  background-color: #ffffba;
+}
+
+table {
+  table-layout: auto;
+  border-spacing: 20px;
+  min-width: 60rem;
+  min-height: 40rem;
+}
+
+td {
+  text-shadow: 0 0px 1px rgb(0, 0, 0);
+  padding: 1rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.26);
+  width: 5rem;
+  max-width: 5rem;
+  word-wrap: break-word;
+}
+
+td>div {
+  cursor: pointer;
+  height: 8rem;
+  overflow-y: auto;
+}
+
+td:hover {
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.26);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #e4e4e400;
+  border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ffffba;
+  border: 1px solid rgba(0, 0, 0, 0.186);
+  border-radius: 100px;
+}
