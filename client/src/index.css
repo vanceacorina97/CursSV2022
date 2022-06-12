@@ -177,11 +177,21 @@ body {
 }
 
 .chat-card {
+  list-style-type: none;
   width: 95%;
   margin-top: 2px;
   overflow: scroll;
   overflow-x: hidden; /* Hide horizontal scrollbar */
   height: 100%;
+}
+
+.chat-card>li {
+  padding: 0.5rem 0.5rem;
+  margin-right: 3%;
+}
+
+.chat-card>li:nth-child(odd) {
+  background: #efefef;
 }
 
 .chat-input-field {

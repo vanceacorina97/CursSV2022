@@ -15,13 +15,12 @@ const ChatBox = ({ socket }) => {
       addMessage(message);
     });
   }, []);
-
   return (
-    <div className="chat-card">
+    <ul className="chat-card">
       {messages.map((message, index) => (
-        <Message key={`message-${index}`} message={message} />
+        <Message key={`message-${index}`} message={message.message} name={message.namePlayer} />
       ))}
-    </div>
+    </ul>
   );
 };
 
