@@ -14,7 +14,6 @@ const Game = (props) => {
   const currentPlayer = () => {
     return props.players[props.socket.id];
   };
-
   return (
     <div className="grid">
       <Board
@@ -24,7 +23,7 @@ const Game = (props) => {
       />
       <div>
         <Player opponent={true} {...opponentPlayer()} />
-        <Chat socket={props.socket} />
+        <Chat socket={props.socket} players={props.players}/>
         <Player {...currentPlayer()} />
       </div>
     </div>

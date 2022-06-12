@@ -19,7 +19,6 @@ const Room = (props) => {
       );
     }
     if (!props.ready) return <Waiting />;
-
     return (
       <Game socket={props.socket} players={props.players} nodes={props.nodes} />
     );

@@ -1,12 +1,11 @@
 import { useState } from "react";
 
-const MessageForm = ({ socket }) => {
+const MessageForm = ({ socket, namePlayer }) => {
   const [message, setMessage] = useState("");
-  // const [name, setName] = useState("");
 
   const sendMessage = () => {
-    // socket.emit("new-message", { name, message, roomName });
-    socket.emit("new-message", message);
+     // socket.emit("new-message", { name, message, roomName });
+    socket.emit("new-message", { namePlayer, message});
     setMessage("");
   };
 
